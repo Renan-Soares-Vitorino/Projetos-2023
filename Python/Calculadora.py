@@ -4,11 +4,18 @@ class calculadora:
     dividir = lambda x,y: x / y
     vezes = lambda x,y: x * y
 
-num0 = int(input("Digite um número: "))
-num1 = int(input("Digite outro número: "))
-operacao = input("Digite uma operação: ")
+def output():
+    try:
+        print(getattr(calculadora, operacao)(num0, num1))
+    except AttributeError:
+        print("Operação não encontrada")
+        inputs()
 
-try:
-    print(getattr(calculadora, operacao)(num0, num1))
-except:
-    pass
+num0 = float(input("Digite um número: "))
+num1 = float(input("Digite outro número: "))
+def inputs():
+    global operacao
+    operacao = input("Digite uma operação: ")
+    output()
+
+inputs()
